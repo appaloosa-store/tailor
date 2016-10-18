@@ -42,15 +42,33 @@ public class UpperCamelCaseListener extends SwiftBaseListener {
     }
 
     @Override
+    public void enterRawValueStyleEnumCase(SwiftParser.RawValueStyleEnumCaseContext ctx) {
+        verifyUpperCamelCase(Messages.ENUM_CASE + Messages.NAMES, ctx.enumCaseName());
+    }
+
+    @Override
+    public void enterUnionStyleEnumCase(SwiftParser.UnionStyleEnumCaseContext ctx) {
+        verifyUpperCamelCase(Messages.ENUM_CASE + Messages.NAMES, ctx.enumCaseName());
+    }
+
+    @Override
     public void enterGenericParameter(SwiftParser.GenericParameterContext ctx) {
         verifyUpperCamelCase(Messages.GENERIC_PARAMETERS + Messages.NAMES, ctx.typeName());
     }
 
     private void verifyUpperCamelCase(String constructType, ParserRuleContext ctx) {
+        Location location = ListenerUtil.getContextStartLocation(ctx);
         String constructName = ctx.getText();
-        if (!CharFormatUtil.isUpperCamelCase(constructName)) {
-            Location location = ListenerUtil.getContextStartLocation(ctx);
-            this.printer.error(Rules.UPPER_CAMEL_CASE, constructType + Messages.UPPER_CAMEL_CASE, location);
+        Boolean isPrivate = constructName.charAt(0) == '_'; // _ClassName is private
+        if (isPrivate) {
+            constructName = constructName.substring(1);
+            if (!CharFormatUtil.isUpperCamelCase(constructName)) {
+                this.printer.error(Rules.UPPER_CAMEL_CASE, Messages.PRIVATE + constructType + Messages.PRIVATE_UPPER_CAMEL_CASE, location);
+            }
+        } else {
+            if (!CharFormatUtil.isUpperCamelCase(constructName)) {
+                this.printer.error(Rules.UPPER_CAMEL_CASE, constructType + Messages.UPPER_CAMEL_CASE, location);
+            }
         }
     }
 

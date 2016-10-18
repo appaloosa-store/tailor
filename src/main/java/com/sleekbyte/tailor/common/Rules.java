@@ -291,7 +291,7 @@ public enum Rules {
 
         UPPER_CAMEL_CASE.name = "upper-camel-case";
         UPPER_CAMEL_CASE.description = "Class, enum, enum value, struct, and protocol names should follow"
-            + " UpperCamelCase naming convention.";
+            + " UpperCamelCase naming convention (preffixed with _ if private).";
         UPPER_CAMEL_CASE.examples = RuleExamples.get(UPPER_CAMEL_CASE.name);
         UPPER_CAMEL_CASE.className = UpperCamelCaseListener.class.getName();
         UPPER_CAMEL_CASE.category = RuleCategory.STYLE;

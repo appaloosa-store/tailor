@@ -13,6 +13,7 @@ public abstract class Messages {
     public static final String GLOBAL = "Global ";
     public static final String NAME = "name ";
     public static final String NAMES = "names ";
+    public static final String PRIVATE = "Private ";
 
     // Singular constructs
     public static final String CLASS = "Class ";
@@ -77,8 +78,9 @@ public abstract class Messages {
     public static final String CONTENT = "content ";
 
     // Message descriptions
-    public static final String UPPER_CAMEL_CASE = "should be UpperCamelCase";
     public static final String LOWER_CAMEL_CASE = "should be lowerCamelCase";
+    public static final String UPPER_CAMEL_CASE = "should be UpperCamelCase";
+    public static final String PRIVATE_UPPER_CAMEL_CASE = "should be _UpperCamelCase";
     public static final String SEMICOLON = "should not terminate with a semicolon";
     public static final String EXCEEDS_LINE_LIMIT = "is over maximum line limit";
     public static final String EXCEEDS_CHARACTER_LIMIT = "is over maximum character limit";
