@@ -11,6 +11,7 @@ import com.sleekbyte.tailor.listeners.MultipleImportListener;
 import com.sleekbyte.tailor.listeners.RedundantParenthesesListener;
 import com.sleekbyte.tailor.listeners.SemicolonTerminatedListener;
 import com.sleekbyte.tailor.listeners.TodoCommentListener;
+import com.sleekbyte.tailor.listeners.MetaCommentListener;
 import com.sleekbyte.tailor.listeners.TrailingClosureListener;
 import com.sleekbyte.tailor.listeners.UpperCamelCaseListener;
 import com.sleekbyte.tailor.listeners.whitespace.AngleBracketWhitespaceListener;
@@ -52,6 +53,7 @@ public enum Rules {
     TERMINATING_NEWLINE,
     TERMINATING_SEMICOLON,
     TODO_SYNTAX,
+    META_COMMENT_SYNTAX,
     TRAILING_CLOSURE,
     TRAILING_WHITESPACE,
     UPPER_CAMEL_CASE;
@@ -266,6 +268,12 @@ public enum Rules {
         TODO_SYNTAX.examples = RuleExamples.get(TODO_SYNTAX.name);
         TODO_SYNTAX.className = TodoCommentListener.class.getName();
         TODO_SYNTAX.category = RuleCategory.STYLE;
+
+        META_COMMENT_SYNTAX.name = "meta-comment-syntax";
+        META_COMMENT_SYNTAX.description = "Meta comments should follow <XXX: description>";
+        META_COMMENT_SYNTAX.examples = RuleExamples.get(META_COMMENT_SYNTAX.name);
+        META_COMMENT_SYNTAX.className = MetaCommentListener.class.getName();
+        META_COMMENT_SYNTAX.category = RuleCategory.STYLE;
 
         TRAILING_CLOSURE.name = "trailing-closure";
         TRAILING_CLOSURE.description = "Functions that have a closure as their last argument should be called"

@@ -18,6 +18,7 @@ import com.sleekbyte.tailor.listeners.BraceStyleListener;
 import com.sleekbyte.tailor.listeners.ErrorListener;
 import com.sleekbyte.tailor.listeners.FileListener;
 import com.sleekbyte.tailor.listeners.TodoCommentListener;
+import com.sleekbyte.tailor.listeners.MetaCommentListener;
 import com.sleekbyte.tailor.listeners.lengths.MaxLengthListener;
 import com.sleekbyte.tailor.listeners.lengths.MinLengthListener;
 import com.sleekbyte.tailor.listeners.whitespace.CommentWhitespaceListener;
@@ -136,6 +137,10 @@ public final class Tailor {
                     TodoCommentListener todoCommentListener = new TodoCommentListener(printer,
                         commentExtractor.getSingleLineComments(), commentExtractor.getMultilineComments());
                     todoCommentListener.analyze();
+                } else if (className.equals(MetaCommentListener.class.getName())) {
+                    MetaCommentListener metaCommentListener = new MetaCommentListener(printer,
+                        commentExtractor.getSingleLineComments(), commentExtractor.getMultilineComments());
+                    metaCommentListener.analyze();
                 } else if (className.equals(BraceStyleListener.class.getName())) {
                     listeners.add(new BraceStyleListener(printer, tokenStream));
                 } else if (className.equals(BlankLineListener.class.getName())) {

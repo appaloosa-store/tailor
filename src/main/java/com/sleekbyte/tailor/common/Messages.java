@@ -60,6 +60,7 @@ public abstract class Messages {
     public static final String DID_SET_CLAUSE = "DidSet clause ";
     public static final String WILLSET_DIDSET_BLOCK = "WillSet/DidSet block ";
     public static final String TODOS = "TODO comments ";
+    public static final String META_COMMENTS = "Meta comments ";
     public static final String GENERIC_PARAMETERS = "Generic parameters ";
     public static final String COMMA = "Comma ";
     public static final String EMPTY_PARENTHESES = "Empty parentheses ";
@@ -104,6 +105,7 @@ public abstract class Messages {
     public static final String ILLEGAL_WHITESPACE = "should not contain whitespace";
     public static final String TODO_SYNTAX = "should be formatted either as <TODO: description>"
         + " or <TODO(dev-name): description>";
+    public static final String META_COMMENT_SYNTAX = "should be formatted as <XXX: description> or <MARK: - description>";
     public static final String REDUNDANT_METHOD_PARENTHESES = "following method call with trailing closure argument"
         + " should be removed";
     public static final String NO_WHITESPACE_BEFORE = "should not be preceded by whitespace";
