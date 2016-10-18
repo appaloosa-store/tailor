@@ -8,6 +8,9 @@ import com.sleekbyte.tailor.common.Rules;
 import com.sleekbyte.tailor.output.Printer;
 import com.sleekbyte.tailor.utils.ListenerUtil;
 import org.antlr.v4.runtime.ParserRuleContext;
+import com.sleekbyte.tailor.utils.ParseTreeUtil;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.Token;
 
 /**
  * Parse tree listener for verifying semicolon termination.
@@ -62,8 +65,13 @@ public class SemicolonTerminatedListener extends SwiftBaseListener {
 
     private void verifyNotSemicolonTerminated(String constructType, ParserRuleContext ctx) {
         String construct = ctx.getText();
-        if (construct.endsWith(";")) {
-            Location location = ListenerUtil.getContextStopLocation(ctx);
+        Location location = ListenerUtil.getContextStopLocation(ctx);
+
+        ParseTree rightNode = ParseTreeUtil.getRightNode(ctx);
+        Location rightLoc = ListenerUtil.getParseTreeStartLocation(rightNode);
+
+        if (construct.endsWith(";")
+            && location.line != rightLoc.line) {
             this.printer.error(Rules.TERMINATING_SEMICOLON, constructType + Messages.SEMICOLON, location);
         }
     }
