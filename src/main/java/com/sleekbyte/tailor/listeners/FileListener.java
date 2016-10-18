@@ -65,6 +65,7 @@ public final class FileListener implements AutoCloseable {
             }
 
             if (enabledRules.contains(Rules.TRAILING_WHITESPACE)
+                    && line.trim().length() > 0 // Ignore indentation lines
                     && SourceFileUtil.lineHasTrailingWhitespace(lineLength, line)) {
                 trailingWhitespaceViolation(lineNumber, lineLength);
             }
