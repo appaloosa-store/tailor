@@ -21,6 +21,8 @@
   •
   <a href="#features">Features</a>
   •
+  <a href="#distribution">Distribution</a>
+  •
   <a href="#developers">Developers</a>
   •
   <a href="#license">License</a>
@@ -404,6 +406,21 @@ tailor -f html main.swift > tailor.html
 ```
 
 ![HTML format](https://cloud.githubusercontent.com/assets/1350704/14971733/236fd5b0-10a3-11e6-9a02-fa1e70702e47.png)
+
+# Distribution
+
+To export tailor compiled program as zip bundle, execute the following command and specify an incremented version:
+
+```
+gradle setVersion install
+> Enter new version number: 0.11.x
+```
+
+The archive can be found at `build/distributions/tailor-0.11.x.zip`, keep the name unchanged.
+
+* Create a release with tag `v0.11.x` and attach the zip file.
+
+* Update the `install.sh` script by changing the line: `TAILOR_VERSION="0.11.x"`
 
 # Developers
 
